@@ -20,7 +20,8 @@ func NewRouter(deps *config.Config) *gin.Engine {
 		ExposeHeaders:    []string{"Content-Length"},
 		MaxAge:          12 * time.Hour,
 	}))
-
+    
+	r.Use(rest.LoggerMiddleware())
 	handler := rest.NewEventHandler(deps)
 
 	api := r.Group("/api")

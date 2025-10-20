@@ -15,6 +15,7 @@ func NewPool() (*PGDBInstance, error) {
 	connectionString := os.Getenv("DATABASE_URL")
 	dbpool, err := pgxpool.New(context.Background(), connectionString)
 
+    
 	if err != nil {
 		return nil, err
 	}

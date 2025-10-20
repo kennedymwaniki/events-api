@@ -4,13 +4,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func AuthMiddleware() gin.HandlerFunc {
-
+func SessionMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		token := c.GetHeader("Authorization")
-		if token == "" {
+
+		sessionID := c.GetHeader("Session-ID")
+		if sessionID == "" {
 			c.AbortWithStatusJSON(401, gin.H{
-				"error": "Authorization header is required",
+				"error": "Session-ID header is required",
 			})
 			return
 		}
