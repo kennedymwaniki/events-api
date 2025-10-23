@@ -10,6 +10,8 @@ import (
 func LoggerMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		clientIP := c.ClientIP()
+		fmt.Printf("This is the clients IP: %s\n", clientIP)
+		fmt.Println("Logging request...")
 		method := c.Request.Method
 		path := c.Request.URL.Path
 		currentTime := time.Now().Format("2006-01-02 15:04:05")
